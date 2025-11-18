@@ -22,6 +22,16 @@ describe('Password class, test suite', () => {
         expect(hashPashhword).not.toBe(pw1);
     });
 
+    test('chek trime',() =>  {
+    const whitespacePassword = '   password12345'
+    const trimmedPassword = new Password(whitespacePassword)
+    expect(trimmedPassword.isPasswordSame(password)).toBe(true)
+    
+})
+  test('chek password the same', () => {
+    const anotherPassword = new Password('password1234')
+    expect(anotherPassword.isPasswordSame(password)).toBe(false)
+  })
 })
 
-    
+
