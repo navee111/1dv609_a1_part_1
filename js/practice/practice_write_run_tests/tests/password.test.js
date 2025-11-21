@@ -18,8 +18,8 @@ describe('Password class, test suite', () => {
     const password = new Password (pw1)
 
     test('replace this test with one of your own and add more', () => {
-        const hashPashhword = password.getPasswordHash()
-        expect(hashPashhword).not.toBe(pw1);
+        const hashPassword = password.getPasswordHash()
+        expect(hashPassword).not.toBe(pw1);
     });
 
     test('chek trime',() =>  {
@@ -32,6 +32,9 @@ describe('Password class, test suite', () => {
     const anotherPassword = new Password('password1234')
     expect(anotherPassword.isPasswordSame(password)).toBe(false)
   })
-})
-
-
+   
+    test('chek if number required', () => {
+      
+      expect(() => new Password('mypasswordmvp')).toThrow('No number found')
+    })
+ })
