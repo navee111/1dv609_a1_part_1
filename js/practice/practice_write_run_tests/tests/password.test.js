@@ -59,4 +59,8 @@ describe('Password class, test suite', () => {
    test('ckeck wrong message',() => {
     expect(() => new Password('short1')).toThrow('Too short password')
    })
+   test('should throw inavlid argument when campering passwords', () => {
+    const password = new Password('mypassword12')
+    expect(() => password.isPasswordSame('mvppass12')).toThrow('Invalid argument')
+   })
 
