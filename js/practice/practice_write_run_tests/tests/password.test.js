@@ -4,43 +4,44 @@
 //import { Password } from '../src/BugDoesNotHash'
 //import { Password } from '../src/BugDoesNotTrim'
  //import { Password } from '../src/BugisPasswordAlwaysSame'
-// import { Password } from '../src/BugMissingNumberCheck'
-// import { Password } from '../src/BugMissingPasswordCheck'
+ //import { Password } from '../src/BugMissingNumberCheck'
+ //import { Password } from '../src/BugMissingPasswordCheck'
 // import { Password } from '../src/BugNeverContainsNumbers'
-//  import { Password } from '../src/BugToShortPassword'
- // import { Password } from '../src/BugVeryShort'
-// import { Password } from '../src/BugWrongHashingAlgorithm'
- //import { Password } from '../src/BugWrongMessage'
- import { Password } from '../src/Correct'
+  //import { Password } from '../src/BugToShortPassword'
+ //import { Password } from '../src/BugVeryShort'
+ //import { Password } from '../src/BugWrongHashingAlgorithm'
+ import { Password } from '../src/BugWrongMessage'
+ //import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     const pw1 = 'password12345'
     const password = new Password (pw1)
 
-    test('replace this test with one of your own and add more', () => {
+    test('check if password is hashed', () => {
         const hashPassword = password.getPasswordHash()
         expect(hashPassword).not.toBe(pw1);
     });
 
-    test('chek trime',() =>  {
+    test('check trime',() =>  {
     const whitespacePassword = '   password12345'
     const trimmedPassword = new Password(whitespacePassword)
     expect(trimmedPassword.isPasswordSame(password)).toBe(true)
     
 })
-  test('chek password the same', () => {
+  test('check if password alway the same', () => {
     const anotherPassword = new Password('password1234')
     expect(anotherPassword.isPasswordSame(password)).toBe(false)
   })
    
+  test('check if password missing number',() => {
+    
+    expect(() => new Password('mvpmypassworda')).toThrow('No number found')
+  })
     test('chek if number required', () => {
       
      expect(() => new Password('mypasswordmvp')).toThrow('No number found')
     })
-    test('check missing password',() => {
-      
-      expect(() => new Password('mvpmypassworda')).toThrow('No number found')
-    })
+
     })
     test('check if conatine number',() => {
         expect(() => new Password('mypasswordmvp1').no.toThrow())

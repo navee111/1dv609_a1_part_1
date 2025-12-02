@@ -1,4 +1,5 @@
-    import { SSNHelper } from '../src/correct/SSNHelper'; 
+    import { isValid } from 'date-fns';
+import { SSNHelper } from '../src/correct/SSNHelper'; 
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
 // import { SSNHelper } from "../src/bugs/BuggySSNHelperAllowMonth0";
 //  import { SSNHelper } from "../src/bugs/BuggySSNHelperIncorrectFormat";
@@ -45,5 +46,11 @@ describe('SSNHelpe Tests', () => {
    const isValidSSN = helper.isCorrectLength(wrongFormat)
    expect(isValidSSN).toBe(false)
 
+  })
+  test("check if month is valid", () => {
+    for (let month = 1; month <= 12; month++) {
+
+  expect(helper.isValidMonth(month)).toBe(true)
+    }
   })
 });
